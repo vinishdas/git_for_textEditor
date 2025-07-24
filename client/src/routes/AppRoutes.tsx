@@ -1,15 +1,19 @@
-import { Routes,Route } from "react-router-dom"
+import { Routes,Route,useLocation } from "react-router-dom"
 import Login from "../pages/Login"
 // import EditorPage  from '../pages/EditorPage'
 import Signup from '../pages/Signup'
 import PrivateRoute  from '../routes/PrivateRoute'
+import { AnimatePresence } from "framer-motion"
 // import History from '../pages/History'
 
 
 const AppRoutes = ()=> {
+     const location = useLocation()
     return (
         <>
-        <Routes>
+          <AnimatePresence mode="wait">
+
+        <Routes location={location} key={location.pathname}>
         <Route path ='/login' element ={<Login/>} /> 
         <Route path = '/signup' element = {<Signup/>}/>
 
@@ -20,6 +24,7 @@ const AppRoutes = ()=> {
          <Route path="/" element={<Login />} /> // fallback page 
         
         </Routes>
+          </AnimatePresence>
         </>
     )
 }

@@ -11,7 +11,7 @@ app.use(cors());
 app.use(express.json())
 
 //Routes
-app.post('/api/auth',AuthRoute) 
+app.use('/api/auth',AuthRoute) ;
  
 
 const PORT = process.env.PORT ||5000;
