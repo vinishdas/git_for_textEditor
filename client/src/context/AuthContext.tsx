@@ -6,19 +6,24 @@ type AuthContextType = {
   user: any | null
   login: (token: string) => void
   logout: () => void
+  loading:boolean
 }
 
 const AuthContext = createContext<AuthContextType | null>(null)
 
 export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const [user, setUser] = useState<any>(null)
+  const [loading,setLoading]=  useState(true)
 
   useEffect(() => {
-    const token = localStorage.getItem('token')
-    if (token && isTokenValid(token)) {
-      const decoded = decodeToken(token)
-      setUser(decoded)
-    }
+     const token = localStorage.getItem('token')
+  console.log('TOKEN ON LOAD:', token)
+  console.log('VALID?', isTokenValid(token ?? ''))
+  if (token && isTokenValid(token)) {
+    const decoded = decodeToken(token)
+    setUser(decoded)
+  }
+  setLoading(false);
   }, [])
 
   const login = (token: string) => {
@@ -39,6 +44,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
         isAuthenticated: !!user,
         login,
         logout,
+        loading,
       }}
     >
       {children}

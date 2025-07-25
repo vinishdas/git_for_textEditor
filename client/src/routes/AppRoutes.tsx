@@ -5,7 +5,7 @@ import Signup from '../pages/Signup'
 import PrivateRoute  from '../routes/PrivateRoute'
 import { AnimatePresence } from "framer-motion"
 // import History from '../pages/History'
-
+import DashboardPage from '../pages/DashboardPage.tsx'
 
 const AppRoutes = ()=> {
      const location = useLocation()
@@ -18,6 +18,7 @@ const AppRoutes = ()=> {
         <Route path = '/signup' element = {<Signup/>}/>
 
         <Route element = {<PrivateRoute/>}>
+            <Route path = '/dashboardPage' element={<DashboardPage/>}/>
             {/* <Route path= '/editorpage' element={<EditorPage/>}/> */}
             {/* <Route path ='/history' element={<History/>}/> */}
         </Route>
