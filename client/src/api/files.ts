@@ -1,13 +1,9 @@
-import axios from 'axios'
+import axiosClient from '../hooks/axiosClient';
 
 export async function getFiles(){
-    const token = localStorage.getItem('token')
+   
     try{
-        const res =  await axios.get('/api/files',{
-            headers:{
-                'Authorization':`Bearer ${token}`
-            },
-        })
+        const res =  await axiosClient.get('/api/files',)
         return res.data;
 
     }catch(err){
@@ -15,4 +11,21 @@ export async function getFiles(){
         console.log("files not retriverd ")
     }
  
+}
+export async function getFilesVersion(params:any) {
+   
+
+}
+
+export const  createNewFile= async (title:string) =>{
+   
+    try{
+        const res= await axiosClient.post('/api/files',{title});
+            return res.data.fileId;
+            }catch(err)
+            {
+            console.log('files could not be fethed ')
+            console.log(err);}
+    
+
 }

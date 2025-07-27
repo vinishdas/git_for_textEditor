@@ -1,22 +1,16 @@
 // import { useEffect,useState } from "react"
 import { useNavigate } from "react-router-dom";
-import { useAuth } from "../context/AuthContext";
- 
+import { useAuth } from "../hooks/useAuth";
+
 import DisplayFiles from "../components/DisplayFiles";
 
 const DashboardPage = () => {
-    
- 
- 
   const { logout } = useAuth();
   const navigator = useNavigate();
-   
-//   const [loading, setLoading] = useState(true)
-//   const [error, setError] = useState<string | null>(null)
 
- 
+  //   const [loading, setLoading] = useState(true)
+  //   const [error, setError] = useState<string | null>(null)
 
-  
   const handalLogout = () => {
     try {
       logout();
@@ -40,13 +34,16 @@ const DashboardPage = () => {
           Logout
         </button>
       </nav>
-        <h2 className="mt-10 ml-3 text-2xl sm:text-5xl font-bold tracking-wider   mb-3" >Explore your Files</h2>
-        <div className="container mx-auto px-4">
-         
-           <div className="flex flex-warp gap-6">
-             <DisplayFiles></DisplayFiles>
-            </div>
+      <div className="bg-[#242424] rounded-md brightness-150 w-[95%] max-w-[1250px] min-h-[500px] mt-16 mx-auto shadow-xl p-3">
+        <div className="text-xl sm:text-2xl font-semibold text-center py-2 text-white ">
+          Explore your Files
         </div>
+
+        <div className="flex flex-wrap gap-6 mt-2 ">
+          <DisplayFiles />
+        </div>
+       
+      </div>
     </>
   );
 };

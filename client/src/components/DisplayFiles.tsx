@@ -1,11 +1,15 @@
 // import { useAuth } from "../context/AuthContext";
 import { useEffect, useState } from "react";
-import { getFiles } from "../api/files";
+import { getFiles,createNewFile } from "../api/files";
+import { useNavigate } from "react-router-dom";
 
 
 
 const DisplayFiles = () => {
+const navigate = useNavigate();
+
 type FileType = {
+  
   fileid: string
   title: string
   createdAt: string
@@ -38,6 +42,20 @@ const fetchFiles = async () => {
     }
   };
 
+  const handalCreateFile= async (title:string)=>{
+    try{
+const fileId = await createNewFile(title);
+if(fileId === undefined) alert('file failed to create ')
+     else  navigate(`/editorpage/${fileId}`)
+    }catch(err){
+      console.log("files could not be created ");
+      console.error(err);
+    }
+  }
+
+ 
+
+
 
   return (<>
   
@@ -46,7 +64,7 @@ const fetchFiles = async () => {
     {files.map(file => (
           <div
             key={file.fileid}
-            className="p-4 border rounded shadow-sm hover:shadow-md transition"
+            className="p-4  rounded shadow-sm hover:shadow-md transition  min-w-35 min-h-25 font-extrabold text-4xl brightness-75 hover:brightness-85 "
           >
             <h2 className="font-semibold text-lg">{file.title}</h2>
             <p className="text-sm text-gray-600">
@@ -54,8 +72,13 @@ const fetchFiles = async () => {
             </p>
           </div>
         ))}
+
     </div>}
-  
+
+   
+        <button  className="p-4  rounded shadow-sm hover:shadow-md transition-all bg-indigo-500   min-w-35 min-h-25 font-extrabold text-4xl brightness-75 hover:brightness-85 " onClick={()=>handalCreateFile('untitled')} >
+ +
+        </button>
   
   </>);
 };

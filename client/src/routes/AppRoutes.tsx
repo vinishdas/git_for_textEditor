@@ -1,6 +1,6 @@
 import { Routes,Route,useLocation } from "react-router-dom"
 import Login from "../pages/Login"
-// import EditorPage  from '../pages/EditorPage'
+import EditorPage  from '../pages/EditorPage'
 import Signup from '../pages/Signup'
 import PrivateRoute  from '../routes/PrivateRoute'
 import { AnimatePresence } from "framer-motion"
@@ -19,7 +19,7 @@ const AppRoutes = ()=> {
 
         <Route element = {<PrivateRoute/>}>
             <Route path = '/dashboardPage' element={<DashboardPage/>}/>
-            {/* <Route path= '/editorpage' element={<EditorPage/>}/> */}
+            <Route path= '/editorpage' element={<EditorPage/>}/>
             {/* <Route path ='/history' element={<History/>}/> */}
         </Route>
          <Route path="/" element={<Login />} /> // fallback page 
