@@ -7,6 +7,7 @@ const User = require('../models/user.model');//dtatbase scheme
 
 exports.signup = async (req, res) => {
   try {
+    
     const { email, password } = req.body;
 
     const existingUser = await User.findOne({ email });

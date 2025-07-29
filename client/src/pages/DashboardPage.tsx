@@ -39,7 +39,7 @@ const DashboardPage = () => {
           Explore your Files
         </div>
 
-        <div className="flex flex-wrap gap-6 mt-2 ">
+        <div className="flex flex-wrap gap-6 mt-2 justify-center sm:justify-start mx-0 sm:mx-4">
           <DisplayFiles />
         </div>
        

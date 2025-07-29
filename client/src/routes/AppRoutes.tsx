@@ -19,7 +19,7 @@ const AppRoutes = ()=> {
 
         <Route element = {<PrivateRoute/>}>
             <Route path = '/dashboardPage' element={<DashboardPage/>}/>
-            <Route path= '/editorpage' element={<EditorPage/>}/>
+            <Route path= '/editorpage/:fileId' element={<EditorPage/>}/>
             {/* <Route path ='/history' element={<History/>}/> */}
         </Route>
          <Route path="/" element={<Login />} /> // fallback page 

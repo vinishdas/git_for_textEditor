@@ -14,6 +14,7 @@ type FileType = {
   title: string
   createdAt: string
   updatedAt: string
+  latestVersionId:number
   // add more fields if needed
 }
     const [files, setFiles] = useState<FileType[]>([]);   
@@ -28,9 +29,10 @@ const fetchFiles = async () => {
     try {
       setLoading(true);
       const response = await getFiles();  // assuming this returns a JSON array
-      const normal = response.map((file:any):FileType=>({
-        fileid:file.fileId,
+      const normal = response.files.map((file:any):FileType=>({
+        fileid:file._id,
         title:file.title,
+        latestVersionId:file.latestVersionId,
         createdAt:file.createdAt,
         updatedAt:file.updatedAt,
       }))
@@ -54,21 +56,23 @@ if(fileId === undefined) alert('file failed to create ')
   }
 
  
+ 
 
 
 
   return (<>
   
   {loading ? <span>Loading..</span>:
-  <div>
+  <div className="flex felx-wrap flex-row">
     {files.map(file => (
           <div
+          onClick={()=>navigate('/editorpage/${fileid}')}
             key={file.fileid}
-            className="p-4  rounded shadow-sm hover:shadow-md transition  min-w-35 min-h-25 font-extrabold text-4xl brightness-75 hover:brightness-85 "
+            className="p-4  rounded shadow-sm hover:shadow-md transition  min-w-35 min-h-25 font-extrabold text-4xl brightness-75 hover:brightness-85 border-1 border-red-500 "
           >
             <h2 className="font-semibold text-lg">{file.title}</h2>
-            <p className="text-sm text-gray-600">
-              Created: {new Date(file.createdAt).toLocaleDateString()}
+            <p className="text-sm text-white font-light ">
+              Version: {file.latestVersionId ?'1':file.latestVersionId}
             </p>
           </div>
         ))}
