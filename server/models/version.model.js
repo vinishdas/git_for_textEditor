@@ -15,8 +15,10 @@ const versionSchema = new Schema(
     },
     chunkHashes: {
       type: [String], // ordered list of chunk hash IDs
-      default:null
+      default:[]
     },
+    branchId: { type: Types.ObjectId, ref: 'branch', required: true },
+
     tag: {
       type: String,
       default: null // optional label like 'v1.0', 'draft'

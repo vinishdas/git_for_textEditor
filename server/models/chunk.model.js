@@ -15,8 +15,7 @@ const chunkSchema = new Schema(
       type: Date,
       default: Date.now
     }
-  },
-  { _id: false }
+  }
 );
 
 module.exports = mongoose.model('chunk', chunkSchema);

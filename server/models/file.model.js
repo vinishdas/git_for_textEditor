@@ -12,11 +12,11 @@ const fileSchema = new Schema(
       type: String,
       required: true
     },
-    latestVersionId: {
-      type: Types.ObjectId,
-      ref: 'version',
-      default: null// optional cache, can be null initially
-    }
+    // latestVersionId: {
+    //   type: Types.ObjectId,
+    //   ref: 'version',
+    //   default: null// optional cache, can be null initially
+    // }
   },
   {
     timestamps: true // auto-generates createdAt and updatedAt
