@@ -109,7 +109,7 @@ Every save or edit in the editor is treated as a version. You can:
 
 * Save a new version.
 * Fetch past versions.
-* Compare diffs between versions.
+* create branches from the current version 
 
 It’s like having Git built into the editor, but focused on documents.
 
@@ -120,15 +120,12 @@ It’s like having Git built into the editor, but focused on documents.
 * Rich text formatting (Markdown, styling, images).
 * Real-time collaboration (multi-user editing).
 * Export to PDF/Markdown.
-* Deployment scripts (Docker, Vercel, Heroku).
+* Deployment scripts (Docker, Vercel, Heroku)
+* diffe viewer
+* merging features
 
 ---
 
-## Contributing
-
-Pull requests are welcome. If you want to make major changes, please open an issue first to discuss the direction.
-
----
 
 ```
 
