@@ -127,7 +127,3 @@ It’s like having Git built into the editor, but focused on documents.
 ---
 
 
-```
-
-Do you want me to also add a **short demo flow** (like: login → create doc → edit → view diff) with maybe ASCII diagrams or screenshots so people see how the app works at a glance?
-```
